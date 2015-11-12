@@ -1,0 +1,47 @@
+<div class="colour-details">
+  <div class="colour-circle" ng-style="{background: colourDetails.service.getSelectedColourAsCSS()}"></div>
+  <h1 id="colour-name">{{colourDetails.service.convertHSLToName(colourDetails.service.getSelectedColour())}}</h1>
+  <section id="colour-hsl">
+    <h2>HSL</h2>
+    <div><strong>Hue:</strong> <span id="current-hue" class="selectable">{{(colourDetails.service.getSelectedColour().h * 100).toFixed(1)}}</span>%</div>
+    <div><strong>Saturation:</strong> <span id="current-saturation" class="selectable">{{(colourDetails.service.getSelectedColour().s * 100).toFixed(1)}}</span>%</div>
+    <div><strong>Lightness:</strong> <span id="current-lightness" class="selectable">{{(colourDetails.service.getSelectedColour().l * 100).toFixed(1)}}</span>%</div>
+  </section>
+  <section id="colour-rgb">
+    <h2>RGB</h2>
+    <div><strong>Red:</strong> <span id="current-red" class="selectable">{{(colourDetails.service.getSelectedColourAsRGB().r).toFixed(0)}}</span></div>
+    <div><strong>Green:</strong> <span id="current-green" class="selectable">{{(colourDetails.service.getSelectedColourAsRGB().g).toFixed(0)}}</span></div>
+    <div><strong>Blue:</strong> <span id="current-blue" class="selectable">{{(colourDetails.service.getSelectedColourAsRGB().b).toFixed(0)}}</span></div>
+  </section>
+  <section id="colour-hex">
+    <h2>Hex</h2>
+    <div><strong>Hex:</strong> <span id="current-hex" class="selectable">{{colourDetails.service.getSelectedColourAsHex()}}</span></div>
+  </section>
+  <section id="colour-similar">
+    <h2>Similar</h2>
+    <div class="colour-similar-set" id="colour-similar-saturation">
+      <strong>Saturation</strong>
+      <colour-similar saturation="-10"></colour-similar
+      ><colour-similar saturation="-5"></colour-similar
+      ><colour-similar saturation="0"></colour-similar
+      ><colour-similar saturation="+5"></colour-similar
+      ><colour-similar saturation="+10"></colour-similar>
+    </div>
+    <div class="colour-similar-set" id="colour-similar=lightness">
+      <strong>Lightness</strong>
+      <colour-similar lightness="-10"></colour-similar
+      ><colour-similar lightness="-5"></colour-similar
+      ><colour-similar lightness="0"></colour-similar
+      ><colour-similar lightness="+5"></colour-similar
+      ><colour-similar lightness="+10"></colour-similar>
+    </div>
+    <div class="colour-similar-set" id="colour-similar-hue">
+      <strong>Hue</strong>
+      <colour-similar hue="-10"></colour-similar
+      ><colour-similar hue="-5"></colour-similar
+      ><colour-similar hue="0"></colour-similar
+      ><colour-similar hue="+5"></colour-similar
+      ><colour-similar hue="+10"></colour-similar>
+    </div>
+  </section>
+</div>

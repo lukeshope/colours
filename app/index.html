@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="angularColour" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="angularColour" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="angularColour" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="angularColour" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Colours</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="app.css">
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body>
+  <section id="main">
+    <colour-picker></colour-picker>
+    <colour-details></colour-details>
+    <div id="version">Colour picker demo app v<span app-version></span></div>
+  </section>
+  <section id="history">
+    <colour-history></colour-history>
+  </section>
+
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="app.js"></script>
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/colour/colour.js"></script>
+  <script src="directives/colour-details/colour-similar/colour-similar-directive.js"></script>
+  <script src="directives/colour-details/colour-details-directive.js"></script>
+  <script src="directives/colour-picker/colour-picker-directive.js"></script>
+  <script src="directives/colour-picker/colour-item/colour-item-directive.js"></script>
+  <script src="directives/colour-picker/colour-picker-directive.js"></script>
+  <script src="directives/colour-history/colour-history-directive.js"></script>
+  <script src="directives/colour-history/colour-history-item/colour-history-item-directive.js"></script>
+</body>
+</html>

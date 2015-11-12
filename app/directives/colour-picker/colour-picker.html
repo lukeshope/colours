@@ -1,0 +1,7 @@
+<div class="colour-picker">
+  <div ng-repeat="j in ::colourPicker.getRows() track by $index" class="colour-picker-row">
+    <colour-picker-item ng-repeat="i in ::colourPicker.getColumns() track by $index"
+                        colour="::colourPicker.getColour(i,j)">
+    </colour-picker-item>
+  </div>
+</div>
