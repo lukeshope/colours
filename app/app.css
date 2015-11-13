@@ -10,7 +10,8 @@ body {
 }
 
 section#main {
-  width: 1100px;
+  width: 930px;
+  height: 560px;
   border-bottom: 1px solid #AAAAAA;
   clear: both;
 }
@@ -34,7 +35,7 @@ section#main {
 
 .colour-details {
   position: absolute;
-  left: 560px;
+  left: 460px;
   right: 0px;
   top: 20px;
   height: auto;
@@ -84,6 +85,7 @@ section#main {
 
 .colour-details .colour-similar-set {
   height: 67px;
+  width: 360px;
 }
 
 .colour-similar {
@@ -109,8 +111,8 @@ section#main {
 
 .colour-picker {
   border: 1px solid black;
-  width: 500px;
-  height: 500px;
+  width: 400px;
+  height: 400px;
 }
 
 .colour-picker-row {
@@ -146,7 +148,7 @@ section#main {
 .colour-history-set {
   position: absolute;
   left: 125px;
-  width: 1000px;
+  width: 830px;
 }
 
 .colour-history-item {

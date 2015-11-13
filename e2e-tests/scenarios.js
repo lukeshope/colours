@@ -3,47 +3,49 @@
 var refreshPage = false;
 var reallyLongTests = true;
 
-var rows = 50;
-var cols = 50;
+var rows = 40;
+var cols = 40;
 var colourTests = [
   // Extremities
   { i: 0, j: 0, name: 'Black' },
-  { i: 49, j: 0, name: 'White' },
+  { i: 39, j: 0, name: 'White' },
   { i: 1, j: 0, name: 'Blackish' },
-  { i: 48, j: 0, name: 'Whiteish' },
-  { i: 25, j: 0, name: 'Boring Grey' },
+  { i: 38, j: 0, name: 'Whiteish' },
+  { i: 22, j: 0, name: 'Boring Grey' },
   { i: 12, j: 0, name: 'Dark Grey' },
-  { i: 37, j: 0, name: 'Light Grey' },
-  { i: 0, j: 49, name: 'Red' },
+  { i: 33, j: 0, name: 'Light Grey' },
+  { i: 0, j: 39, name: 'Red' },
   // Core colours
-  { i: 2, j: 25, name: 'Red' },
-  { i: 25, j: 25, name: 'Light Blue' },
-  { i: 5, j: 25, name: 'Orange' },
-  { i: 7, j: 25, name: 'Yellow' },
-  { i: 12, j: 25, name: 'Green' },
-  { i: 20, j: 25, name: 'Bluey Green' },
-  { i: 30, j: 25, name: 'Blue' },
-  { i: 35, j: 25, name: 'Deep Blue' },
-  { i: 40, j: 25, name: 'Purple' },
-  { i: 45, j: 25, name: 'Pink' },
-  { i: 48, j: 25, name: 'Red' },
+  { i: 2, j: 20, name: 'Red' },
+  { i: 20, j: 20, name: 'Light Blue' },
+  { i: 4, j: 20, name: 'Orange' },
+  { i: 7, j: 20, name: 'Yellow' },
+  { i: 12, j: 20, name: 'Green' },
+  { i: 17, j: 20, name: 'Bluey Green' },
+  { i: 20, j: 20, name: 'Light Blue' },
+  { i: 23, j: 20, name: 'Blue' },
+  { i: 25, j: 20, name: 'Deep Blue' },
+  { i: 30, j: 20, name: 'Purple' },
+  { i: 35, j: 20, name: 'Pink' },
+  { i: 38, j: 20, name: 'Red' },
   // Nearly grey colours
-  { i: 2, j: 10, name: 'Greyey Red' },
-  { i: 25, j: 10, name: 'Greyey Light Blue' },
-  { i: 5, j: 10, name: 'Greyey Orange' },
-  { i: 7, j: 10, name: 'Greyey Yellow' },
-  { i: 12, j: 10, name: 'Greyey Green' },
-  { i: 20, j: 10, name: 'Greyey Bluey Green' },
-  { i: 30, j: 10, name: 'Greyey Blue' },
-  { i: 35, j: 10, name: 'Greyey Deep Blue' },
-  { i: 40, j: 10, name: 'Greyey Purple' },
-  { i: 45, j: 10, name: 'Greyey Pink' },
-  { i: 48, j: 10, name: 'Greyey Light Red' },
+  { i: 2, j: 7, name: 'Greyey Red' },
+  { i: 22, j: 7, name: 'Greyey Light Blue' },
+  { i: 3, j: 7, name: 'Greyey Orange' },
+  { i: 7, j: 7, name: 'Greyey Yellow' },
+  { i: 12, j: 7, name: 'Greyey Green' },
+  { i: 17, j: 7, name: 'Greyey Bluey Green' },
+  { i: 20, j: 7, name: 'Greyey Light Blue' },
+  { i: 23, j: 7, name: 'Greyey Blue' },
+  { i: 25, j: 7, name: 'Greyey Deep Blue' },
+  { i: 30, j: 7, name: 'Greyey Purple' },
+  { i: 35, j: 7, name: 'Greyey Pink' },
+  { i: 38, j: 7, name: 'Greyey Light Red' },
   // Light colours
-  { i: 35, j: 5, name: 'Greyey Blue' },
-  { i: 40, j: 5, name: 'Greyey Light Purple' },
-  { i: 45, j: 5, name: 'Greyey Light Pink' },
-  { i: 48, j: 5, name: 'Greyey Almost-white Red' }
+  { i: 35, j: 4, name: 'Greyey Blue' },
+  { i: 30, j: 4, name: 'Greyey Light Purple' },
+  { i: 35, j: 4, name: 'Greyey Light Pink' },
+  { i: 38, j: 4, name: 'Greyey Almost-white Red' }
 ];
 var colourRainbow = [
   'Red',
@@ -106,7 +108,7 @@ describe('[Colour picker]', function() {
 
     it('should display 2,500 colours in a grid', function() {
       expect(element.all(by.css('.colour-picker-item')).count()).
-        toBe(2500);
+        toBe(cols * rows);
     });
 
   });
@@ -149,7 +151,6 @@ describe('[Colour picker]', function() {
     it('should provide options for similar saturation', function() {
       expect(element.all(by.css('colour-similar[saturation=\'-10\'] div')).count()).toBe(1);
       expect(element.all(by.css('colour-similar[saturation=\'-5\'] div')).count()).toBe(1);
-      expect(element.all(by.css('colour-similar[saturation=\'0\'] div')).count()).toBe(1);
       expect(element.all(by.css('colour-similar[saturation=\'+5\'] div')).count()).toBe(1);
       expect(element.all(by.css('colour-similar[saturation=\'+10\'] div')).count()).toBe(1);
     });
@@ -157,7 +158,6 @@ describe('[Colour picker]', function() {
     it('should provide options for similar lightness', function() {
       expect(element.all(by.css('colour-similar[lightness=\'-10\'] div')).count()).toBe(1);
       expect(element.all(by.css('colour-similar[lightness=\'-5\'] div')).count()).toBe(1);
-      expect(element.all(by.css('colour-similar[lightness=\'0\'] div')).count()).toBe(1);
       expect(element.all(by.css('colour-similar[lightness=\'+5\'] div')).count()).toBe(1);
       expect(element.all(by.css('colour-similar[lightness=\'+10\'] div')).count()).toBe(1);
     });
@@ -165,7 +165,6 @@ describe('[Colour picker]', function() {
     it('should provide options for similar hue', function() {
       expect(element.all(by.css('colour-similar[hue=\'-10\'] div')).count()).toBe(1);
       expect(element.all(by.css('colour-similar[hue=\'-5\'] div')).count()).toBe(1);
-      expect(element.all(by.css('colour-similar[hue=\'0\'] div')).count()).toBe(1);
       expect(element.all(by.css('colour-similar[hue=\'+5\'] div')).count()).toBe(1);
       expect(element.all(by.css('colour-similar[hue=\'+10\'] div')).count()).toBe(1);
     });
@@ -200,7 +199,7 @@ describe('[Colour picker]', function() {
 
     beforeAll(function() {
       if ( refreshPage ) browser.get('index.html');
-      element.all(by.css('.colour-picker-item')).get(getIndex(0, 25)).click();
+      element.all(by.css('.colour-picker-item')).get(getIndex(0, 20)).click();
     });
 
     for ( var i = 1; i < colourRainbow.length; i++ ) {
@@ -252,7 +251,7 @@ describe('[Colour picker]', function() {
 
     beforeAll(function() {
       if ( refreshPage ) browser.get('index.html');
-      element.all(by.css('.colour-picker-item')).get(getIndex(0, 49)).click();
+      element.all(by.css('.colour-picker-item')).get(getIndex(0, 39)).click();
     });
 
     for ( var i = 1; i < saturationScale.length; i++ ) {
@@ -278,14 +277,14 @@ describe('[Colour picker]', function() {
     });
 
     it('should display (255, 0, 0) for pure red', function() {
-      element.all(by.css('.colour-picker-item')).get(getIndex(0, 49)).click();
+      element.all(by.css('.colour-picker-item')).get(getIndex(0, 39)).click();
       expect(element(by.id('current-red')).getText()).toBe('255');
       expect(element(by.id('current-green')).getText()).toBe('0');
       expect(element(by.id('current-blue')).getText()).toBe('0');
     });
 
     it('should display (255, 255, 255) for pure white', function() {
-      element.all(by.css('.colour-picker-item')).get(getIndex(49, 0)).click();
+      element.all(by.css('.colour-picker-item')).get(getIndex(39, 0)).click();
       expect(element(by.id('current-red')).getText()).toBe('255');
       expect(element(by.id('current-green')).getText()).toBe('255');
       expect(element(by.id('current-blue')).getText()).toBe('255');
@@ -307,12 +306,12 @@ describe('[Colour picker]', function() {
     });
 
     it('should display #FF0000 for pure red', function() {
-      element.all(by.css('.colour-picker-item')).get(getIndex(0, 49)).click();
+      element.all(by.css('.colour-picker-item')).get(getIndex(0, 39)).click();
       expect(element(by.id('current-hex')).getText()).toBe('#FF0000');
     });
 
     it('should display #FFFFFF for pure white', function() {
-      element.all(by.css('.colour-picker-item')).get(getIndex(49, 0)).click();
+      element.all(by.css('.colour-picker-item')).get(getIndex(39, 0)).click();
       expect(element(by.id('current-hex')).getText()).toBe('#FFFFFF');
     });
 
@@ -330,14 +329,14 @@ describe('[Colour picker]', function() {
     });
 
     it('should display (0.0%, 100.0%, 50.0%) for pure red', function() {
-      element.all(by.css('.colour-picker-item')).get(getIndex(0, 49)).click();
+      element.all(by.css('.colour-picker-item')).get(getIndex(0, 39)).click();
       expect(element(by.id('current-hue')).getText()).toBe('0.0');
       expect(element(by.id('current-saturation')).getText()).toBe('100.0');
       expect(element(by.id('current-lightness')).getText()).toBe('50.0');
     });
 
     it('should display (0.0%, 0.0%, 100.0%) for pure white', function() {
-      element.all(by.css('.colour-picker-item')).get(getIndex(49, 0)).click();
+      element.all(by.css('.colour-picker-item')).get(getIndex(39, 0)).click();
       expect(element(by.id('current-hue')).getText()).toBe('0.0');
       expect(element(by.id('current-saturation')).getText()).toBe('0.0');
       expect(element(by.id('current-lightness')).getText()).toBe('100.0');

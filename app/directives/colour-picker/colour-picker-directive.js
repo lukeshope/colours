@@ -16,8 +16,8 @@ angular.module('angularColour.colourPicker', [
 
 function colourPickerController(colourService) {
   this.service = colourService;
-  this.rows = 50;
-  this.cols = 50;
+  this.rows = 40;
+  this.cols = 40;
   this.totalItems = this.rows * this.cols;
   this.items = [];
 
